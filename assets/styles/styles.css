@@ -1,0 +1,23 @@
+.tile {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    margin: 0.3rem;
+}
+
+.tile2{
+    height: 7rem;
+    border-radius: 30%;
+}
+
+.space {
+    background-image: url("../images/adesivo_piso_madeira_castanho_antiderrapante_43611856_2_20200708193824.jpg");
+    opacity: 75%;
+}
+
+.table {
+    height: 8rem;
+    width: 30rem;
+    padding: 0.5rem;
+    background-image: url("../images/wood_board.png");
+}
