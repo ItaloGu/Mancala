@@ -7,7 +7,8 @@ class mancala {
                 oasis: 7,
                 score: this.board[7],
                 boardSide: [1, 2, 3, 4, 5, 6],
-                distribution: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                distribution: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                boardHighlighted: [1, 2, 3, 4, 5, 6, 7]
 
             },
             {
@@ -15,8 +16,8 @@ class mancala {
                 oasis: 0,
                 score: this.board[0],
                 boardSide: [8, 9, 10, 11, 12, 13],
-                distribution: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13]
-
+                distribution: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13],
+                boardHighlighted: [8, 9, 10, 11, 12, 13, 0]
             }
         ]
         this.counter = 0
@@ -30,7 +31,8 @@ class mancala {
         this.otherOasis = this.otherPlayer.oasis
         this.currentBoardSide = this.currentPlayer.boardSide
         this.otherBoardSide = this.otherPlayer.boardSide
-
+        this.currentDistribution = this.currentPlayer.distribution
+        this.currentBoardHighlighted = this.currentPlayer.boardHighlighted
     }
 
 
@@ -41,19 +43,12 @@ class mancala {
     endGame() {
         for (let i = 0; i < this.holes.length; i++) {
 
-            if (this.board[this.holes[i]] < 2) {
-                this.counter++
+            if (this.board[this.holes[i]] < 1) {
+                this.gameCounter++
 
             }
         }
-        if (this.counter === 12) {
-            for (let i = 0; i < 6; i++) {
-                this.board[this.currentOasis] += this.board[this.currentBoardSide[i]]
-                this.board[this.otherOasis] += this.board[this.otherBoardSide[i]]
-                this.board[this.currentBoardSide[i]] = 0;
-                this.board[this.otherBoardSide[i]] = 0;
-            }
-
+        if (this.gameCounter === 12) {
             this.gameOver = true
         }
         this.counter = 0
@@ -74,10 +69,12 @@ class mancala {
     //se a ultima peça cair em uma casa vasia voce rouba as peças da casa em frente OK   
 
     robPieces() {
-        if ((this.board[(this.space + this.pieces) % 14]) === 1) {
-            this.board[this.currentOasis] += (this.board[(14 - ((this.space + this.pieces) % 14))] + 1)
-            this.board[(14 - ((this.space + this.pieces) % 14))] = 0
-            this.board[(this.space + this.pieces) % 14] = 0
+        if(((this.space + this.pieces) % 14) !== 0 && ((this.space + this.pieces) % 14) !== 7){
+            if ((this.board[(this.space + this.pieces) % 14]) === 1 && this.board[(14 - ((this.space + this.pieces) % 14))] !== 0) {
+                this.board[this.currentOasis] += (this.board[(14 - ((this.space + this.pieces) % 14))] + 1)
+                this.board[(14 - ((this.space + this.pieces) % 14))] = 0
+                this.board[(this.space + this.pieces) % 14] = 0
+            }
         }
     }
 
@@ -121,6 +118,8 @@ class mancala {
         this.board[this.space] -= this.pieces;
         this.robPieces()
         this.changePlayer()
+        this.currentBoardSide = this.currentPlayer.boardSide
+        this.currentDistribution = this.currentPlayer.distribution
         this.endGame()
         this.points()
     }
