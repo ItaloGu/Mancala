@@ -26,7 +26,7 @@
               data-bs-toggle="dropdown"
               href="#"
               role="button"
-              aria-expanded="false"
+              aria-expanded="false" id="rules"
               >Regras</a
             >
             <ul class="dropdown-menu">
@@ -63,61 +63,48 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-expanded="false"
-              >Jogador</a
-            >
-          </li>
+          
           <li>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#">Jogar</a>
+            <a id="play" class="flex-sm-fill text-sm-center nav-link" href="#">Jogar</a>
           </li>
         </ul>
       </nav>
     </header>
-    <section>
-      <h1 class="d-flex justify-content-center">Mancala</h1>
-      <div class="d-flex justify-content-evenly">
+    <section class="d-flex justify-content-center flex-column">
+      <h1 class="d-flex justify-content-center title">Mancala</h1>
+      <div class="d-flex justify-content-center flex-column align-items-center align-content-center board">
         <aside>
-          <ul>
-            <li>Jogador 1</li>
-            <li>Peças no oásis</li>
-          </ul>
+            <span>Jogador2</span>
         </aside>
-        <div>
-          <div class="table d-flex flex-wrap justify-content-evenly space border border-dark">
-            <div class="col-1 space tile2"></div>
-            <div class="col-9 tile2 d-flex flex-wrap justify-content-evenly">
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
-              <div class="col-1 space tile"></div>
+        <div id="gameBoard">
+          <div class="table d-flex flex-wrap justify-content-evenly align-items-center space">
+            <div id='0' class="col-1 tile2 border border-dark"><span>0</span></div>
+            <div class="col-9 d-flex flex-wrap justify-content-evenly space">
+              <div id='1' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='2' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='3' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='4' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='5' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='6' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='7' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='8' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='9' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='10' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='11' class="col-1 space tile  border border-dark"><span>4</span></div>
+              <div id='12' class="col-1 space tile  border border-dark"><span>4</span></div>
             </div>
-            <div class="col-1 space tile2"></div>
+            <div id='13' class="col-1 space tile2 border border-dark"><span>0</span></div>
           </div>
         </div>
         <aside>
-          <ul>
-            <li>Jogador 2</li>
-            <li>Peças no oásis</li>
-          </ul>
+            <span>Jogador1</span>
         </aside>
       </div>
     </section>
     <section>
-      <p class="d-flex justify-content-center">Jogador X venceu</p>
+        <span class="fs-1 d-flex justify-content-center visually-hidden"
+        ><strong>Vencedor:</strong> <span id="winner"></span
+      ></span>
     </section>
 
     <script src="./assets/scrips/index.js"></script>
