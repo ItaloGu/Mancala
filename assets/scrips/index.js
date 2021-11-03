@@ -99,29 +99,30 @@ class mancala {
     }
 
 
-    // cada jogada OK *precisa de ajustes  
+    // cada jogada OK 
 
     play(n) {
         this.space = n
         this.pieces = this.board[this.space]
+        this.counter = this.pieces
         for (let i = 0; i < this.pieces; i++) {
             if (this.currentDistribution.indexOf((this.space + 1 + i) % 14) === -1) {
-              this.pieces++
-            } else {
-                this.board[(this.space + 1 + i) % 14]++
+                this.counter++
             }
         }
-      this.board[this.space] -= this.pieces;
-      this.robPieces()
-      this.changePlayer()
-      this.endGame()
-      this.points()
+        for (let j = 0; j < this.counter; j++) {
+
+            if (this.currentDistribution.indexOf((this.space + 1 + j) % 14) !== -1) {
+                this.board[(this.space + 1 + j) % 14]++
+            }
+        }
+
+
+        this.board[this.space] -= this.pieces;
+        this.robPieces()
+        this.changePlayer()
+        this.endGame()
+        this.points()
     }
+
 }
-
-
-
-/*    
-        
-        
-        */

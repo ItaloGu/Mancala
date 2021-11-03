@@ -7,3 +7,6 @@ const player1Element = document.getElementById('player1');
 const gameBoardElement = document.getElementById('gameBoard');
 const player2Element = document.getElementById('player2');
 const resultElement = document.getElementById('result');
+
+
+
