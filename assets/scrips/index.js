@@ -105,19 +105,18 @@ class mancala {
         this.space = n
         this.pieces = this.board[this.space]
         for (let i = 0; i < this.pieces; i++) {
-            if (((this.space + 1 + i) % 14) === this.otherOasis) {
-                this.board[(this.space + 1 + this.pieces) % 14]++
+            if (this.currentDistribution.indexOf((this.space + 1 + i) % 14) === -1) {
+              this.pieces++
             } else {
                 this.board[(this.space + 1 + i) % 14]++
             }
         }
-        this.board[this.space] -= this.pieces;
-        this.robPieces()
-        this.changePlayer()
-        this.endGame()
-        this.points()
+      this.board[this.space] -= this.pieces;
+      this.robPieces()
+      this.changePlayer()
+      this.endGame()
+      this.points()
     }
-
 }
 
 
