@@ -33,6 +33,7 @@ class mancala {
         this.otherBoardSide = this.otherPlayer.boardSide
         this.currentDistribution = this.currentPlayer.distribution
         this.currentBoardHighlighted = this.currentPlayer.boardHighlighted
+        this.resultText = 0
     }
 
 
@@ -58,11 +59,11 @@ class mancala {
 
     points() {
         if (this.players[0].score > this.players[1].score && this.gameOver === true) {
-            return `${this.players[0].name} Won!`;
+            this.resultText = `${this.players[0].name}`;
         } else if (this.players[1].score > this.players[0].score && this.gameOver === true) {
-            return `${this.players[1].name} Won!`;
+            this.resultText = `${this.players[1].name}`;
         } else if (this.gameOver === true) {
-            return `It's a tie!`
+            this.resultText = `É um empate`;
         }
     }
 
@@ -99,29 +100,31 @@ class mancala {
     // cada jogada OK 
 
     play(n) {
-        this.space = n
-        this.pieces = this.board[this.space]
-        this.counter = this.pieces
-        for (let i = 0; i < this.pieces; i++) {
-            if (this.currentDistribution.indexOf((this.space + 1 + i) % 14) === -1) {
-                this.counter++
+        if (n !== 0){
+            this.space = n
+            this.pieces = this.board[this.space]
+            this.counter = this.pieces
+            for (let i = 0; i < this.pieces; i++) {
+                if (this.currentDistribution.indexOf((this.space + 1 + i) % 14) === -1) {
+                    this.counter++
+                }
             }
-        }
-        for (let j = 0; j < this.counter; j++) {
-
-            if (this.currentDistribution.indexOf((this.space + 1 + j) % 14) !== -1) {
-                this.board[(this.space + 1 + j) % 14]++
+            for (let j = 0; j < this.counter; j++) {
+    
+                if (this.currentDistribution.indexOf((this.space + 1 + j) % 14) !== -1) {
+                    this.board[(this.space + 1 + j) % 14]++
+                }
             }
+    
+    
+            this.board[this.space] -= this.pieces;
+            this.robPieces()
+            this.changePlayer()
+            this.currentBoardSide = this.currentPlayer.boardSide
+            this.currentDistribution = this.currentPlayer.distribution
+            this.endGame()
+            this.points()
         }
-
-
-        this.board[this.space] -= this.pieces;
-        this.robPieces()
-        this.changePlayer()
-        this.currentBoardSide = this.currentPlayer.boardSide
-        this.currentDistribution = this.currentPlayer.distribution
-        this.endGame()
-        this.points()
     }
 
 }

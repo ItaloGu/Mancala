@@ -5,6 +5,8 @@ const player1Element = document.getElementById('player1');
 const gameBoardElement = document.getElementById('gameBoard');
 const player2Element = document.getElementById('player2');
 const resultElement = document.getElementById('result');
+const winnerElement = document.getElementById('winner')
+const winnerTextElement = document.getElementById('winnerText')
 let hole0 = document.getElementById('0')
 let hole1 = document.getElementById('1')
 let hole2 = document.getElementById('2')
@@ -73,12 +75,19 @@ playElement.addEventListener('click', () => {
 
 
 document.addEventListener('click', (event) => {
-    if (game.currentBoardSide.indexOf(parseInt(event.target.id)) !== -1) {
-        game.play(parseInt(event.target.id))
-        changeColor()
-        changeBoard()
+    if (parseInt(event.target.innerText) !== 0){
+        if (game.currentBoardSide.indexOf(parseInt(event.target.id)) !== -1) {
+            game.play(parseInt(event.target.id))
+            changeColor()
+            changeBoard()
+        }
+    
+    
+    }
+    if (game.gameOver === true){
+        winnerElement.innerText = game.resultText
+        winnerTextElement.classList.remove('visually-hidden')
     }
 
-
-
 })
+
