@@ -11,4 +11,3 @@ Este é um projeto do bootcamp Ironhack realizado em 7 dias com a finalidade de 
 [Demo do Jogo](https://italogu.github.io/Mancala/)
 
 [Slides](https://docs.google.com/presentation/d/1EX3Xu_Iyf6cOfdjc8MFgS1OiaI06yNh-3UdTsjXpY24/edit?usp=sharing)
-
