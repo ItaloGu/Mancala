@@ -1,3 +1,16 @@
+.textDecoration{
+    text-decoration: none;
+    color: black;
+}
+
+.rules-box{
+    text-align: center;
+    text-overflow: initial;
+    width: auto;
+    overflow: auto;
+    
+}
+
 
 
 .tile {
@@ -15,6 +28,7 @@
     font-size: 60px;
   font-weight: bold;
   text-align: center;
+  padding-top: 3%;
 }
 
 .space{
@@ -25,7 +39,7 @@
     padding: 10%;
 }
 
-.table {
+.boardGame {
     height: 16rem;
     width: 60rem;
     padding: 0.3rem;
@@ -35,3 +49,4 @@
 .title{
     margin-top: 2rem;
 }
+

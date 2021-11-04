@@ -11,7 +11,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
+    
     <link rel="stylesheet" href="./assets/styles/styles.css" />
 
     <title>Mancala</title>
@@ -21,93 +21,154 @@
       <nav class="d-flex justify-content-evenly">
         <ul class="nav nav-pills d-flex justify-content-evenly">
           <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-expanded="false" id="rules"
-              >Regras</a
-            >
-            <ul class="dropdown-menu">
-              <li>
-                <p class="dropdown-item">
-                  Os jogadores sentam-se frente a frente e ficam com o oásis à
-                  sua direita. Em seguida, cada um distribui 18 sementes em suas
+            <a class="flex-sm-fill text-sm-center nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Regras
+              </a>
+            <div class="dropdown-menu dropdown-menu-right rules-box">
+              <article>
+
+                <p class="dropdown-item rules-text">
+                  Os jogadores sentam-se frente a frente e ficam com o oásis à <br>
+                  sua direita. Em seguida, cada um distribui 18 sementes em suas <br>
                   seis cavas (três em cada). No início, o oásis fica vazio.
                 </p>
-              </li>
-              <li>
-                <p class="dropdown-item">
-                  Quem começa escolhe uma das cavas do seu campo, pega todas as
-                  sementes dela e as distribui, uma a uma, nas cavas seguintes,
+              
+              
+                <p class="dropdown-item rules-text">
+                  Quem começa escolhe uma das cavas do seu campo, pega todas as<br>
+                  sementes dela e as distribui, uma a uma, nas cavas seguintes,<br>
                   caminhando no sentido anti-horário.
                 </p>
-              </li>
-              <li>
-                <p class="dropdown-item">
-                  Se passar pelo próprio oásis, o jogador deixa uma semente nele
-                  e segue colocando as demais no campo adversário, mas nunca no
-                  oásis de lá. Se a última semente cair no próprio oásis, ele
-                  pode fazer outra jogada. Se ela cair em uma cava vazia, ele
-                  pode adicionar ao seu oásis todas as sementes da cava
+              
+              
+                <p class="dropdown-item rules-text">
+                  Se passar pelo próprio oásis, o jogador deixa uma semente nele<br>
+                  e segue colocando as demais no campo adversário, mas nunca no<br>
+                  oásis de lá. Se a última semente cair no próprio oásis, ele<br>
+                  pode fazer outra jogada. Se ela cair em uma cava vazia, ele<br>
+                  pode adicionar ao seu oásis todas as sementes da cava<br>
                   seguinte.
                 </p>
-              </li>
-              <li>
+              
+              
                 <p class="dropdown-item">
-                  Quando as sementes se reduzirem a ponto de não ser mais
-                  possível semear o campo adversário, os jogadores recolhem suas
+                  Quando as sementes se reduzirem a ponto de não ser mais<br>
+                  possível semear o campo adversário, os jogadores recolhem suas<br>
                   sobras, juntam ao seu oásis e contam. Quem tiver mais, ganha.
                 </p>
-              </li>
-            </ul>
+        
+              </article>
+            </div>
           </li>
-          
+
           <li>
-            <a id="play" class="flex-sm-fill text-sm-center nav-link" href="#">Novo Jogo</a>
+            <a id="play" class="flex-sm-fill text-sm-center nav-link " href="#"
+              >Novo Jogo</a
+            >
           </li>
         </ul>
       </nav>
     </header>
     <section class="d-flex justify-content-center flex-column">
       <h1 class="d-flex justify-content-center title">Mancala</h1>
-      <div class="d-flex justify-content-center flex-column align-items-center align-content-center board">
+      <div
+        class="
+          d-flex
+          justify-content-center
+          flex-column
+          align-items-center align-content-center
+          board
+        "
+      >
         <aside>
-            <span>Jogador2</span>
+          <span>Jogador2</span>
         </aside>
         <div id="gameBoard">
-          <div class="table d-flex flex-wrap justify-content-evenly align-items-center space">
-            <div class="col-1 tile2 border border-dark player2"><span id="0">0</span></div>
-            <div class="col-9 d-flex flex-wrap justify-content-evenly space">
-              <div class="col-1 space tile  border border-dark player2"><span id="13">4</span></div>
-              <div class="col-1 space tile  border border-dark player2"><span id="12">4</span></div>
-              <div class="col-1 space tile  border border-dark player2"><span id="11">4</span></div>
-              <div class="col-1 space tile  border border-dark player2"><span id="10">4</span></div>
-              <div class="col-1 space tile  border border-dark player2"><span id="9">4</span></div>
-              <div class="col-1 space tile  border border-dark player2"><span id="8">4</span></div>
-              <div class="col-1 space tile  border border-dark player1"><span id="1">4</span></div>
-              <div class="col-1 space tile  border border-dark player1"><span id="2">4</span></div>
-              <div class="col-1 space tile  border border-dark player1"><span id="3">4</span></div>
-              <div class="col-1 space tile  border border-dark player1"><span id="4">4</span></div>
-              <div class="col-1 space tile  border border-dark player1"><span id="5">4</span></div>
-              <div class="col-1 space tile  border border-dark player1"><span id="6">4</span></div>
+          <div
+            class="
+            boardGame
+            d-flex
+            flex-wrap
+            justify-content-evenly
+            align-items-center
+            space
+            "
+          >
+            <div class="col-1 tile2 border border-dark player2">
+              <a href="#" class="textDecoration" id="0"></a>
             </div>
-            <div class="col-1 space tile2 border border-dark player1"><span id="7">0</span></div>
+            <div class="col-9 d-flex flex-wrap justify-content-evenly space">
+              <div class="col-1 space tile border border-dark player2">
+                <a href="#" class="textDecoration" id="13"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player2">
+                <a href="#" class="textDecoration" id="12"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player2">
+                <a href="#" class="textDecoration" id="11"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player2">
+                <a href="#" class="textDecoration" id="10"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player2">
+                <a href="#" class="textDecoration" id="9"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player2">
+                <a href="#" class="textDecoration" id="8"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player1">
+                <a href="#" class="textDecoration" id="1"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player1">
+                <a href="#" class="textDecoration" id="2"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player1">
+                <a href="#" class="textDecoration" id="3"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player1">
+                <a href="#" class="textDecoration" id="4"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player1">
+                <a href="#" class="textDecoration" id="5"></a>
+              </div>
+              <div class="col-1 space tile border border-dark player1">
+                <a href="#" class="textDecoration" id="6"></a>
+              </div>
+            </div>
+            <div class="col-1 space tile2 border border-dark player1">
+              <a href="#" class="textDecoration" id="7"></a>
+            </div>
           </div>
         </div>
         <aside>
-            <span>Jogador1</span>
+          <span>Jogador1</span>
         </aside>
       </div>
     </section>
     <section>
-        <span id="winnerText" class="fs-1 d-flex justify-content-center visually-hidden"
+      <span
+        id="winnerText"
+        class="fs-1 d-flex justify-content-center visually-hidden"
         ><strong>Vencedor:</strong> <span id="winner"></span
       ></span>
     </section>
 
     <script src="./assets/scrips/index.js"></script>
     <script src="./assets/scrips/game.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

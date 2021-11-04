@@ -22,6 +22,7 @@ let hole11 = document.getElementById('11')
 let hole12 = document.getElementById('12')
 let hole13 = document.getElementById('13')
 
+
 const changeColor = () => {
     if (game.currentPlayer === game.players[0]) {
         let redTiles = document.getElementsByClassName("player1");
@@ -48,8 +49,23 @@ const changeColor = () => {
     }
 }
 
+let checkEmpitySide = () => {
+    let counterP = 0
+
+    game.currentBoardSide.map((element) => {
+        if (game.board[element] === 0) {
+            counterP++
+        }
+    })
+    if (counterP === 6) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 let changeBoard = () => {
-    hole0.innerText = game.board[0]    
+    hole0.innerText = game.board[0]
     hole1.innerText = game.board[1]
     hole2.innerText = game.board[2]
     hole3.innerText = game.board[3]
@@ -67,27 +83,44 @@ let changeBoard = () => {
 
 let game = 0
 
+console.log()
+
+
 playElement.addEventListener('click', () => {
     game = new mancala
     changeColor()
     changeBoard()
 })
 
+document.addEventListener('click', () => {
+    if (game.gameOver === true) {
+        game.points()
+        winnerElement.innerText = game.resultText
+        winnerTextElement.classList.remove('visually-hidden')
+    }
+})
+
+
 
 document.addEventListener('click', (event) => {
-    if (parseInt(event.target.innerText) !== 0){
+
+    if (parseInt(event.target.innerText) !== 0 && checkEmpitySide()) {
+
         if (game.currentBoardSide.indexOf(parseInt(event.target.id)) !== -1) {
             game.play(parseInt(event.target.id))
             changeColor()
             changeBoard()
         }
-    
-    
+
+
+    } else if (!checkEmpitySide()) {
+        game.changePlayer()
+        changeColor()
+        changeBoard()
+
     }
-    if (game.gameOver === true){
-        winnerElement.innerText = game.resultText
-        winnerTextElement.classList.remove('visually-hidden')
-    }
+
+
+
 
 })
-

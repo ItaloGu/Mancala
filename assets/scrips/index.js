@@ -3,7 +3,7 @@ class mancala {
         this.board = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4]
         this.holes = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13]
         this.players = [{
-                name: 'player1',
+                name: 'Jogador1',
                 oasis: 7,
                 score: this.board[7],
                 boardSide: [1, 2, 3, 4, 5, 6],
@@ -12,7 +12,7 @@ class mancala {
 
             },
             {
-                name: 'player2',
+                name: 'Jogador2',
                 oasis: 0,
                 score: this.board[0],
                 boardSide: [8, 9, 10, 11, 12, 13],
@@ -21,6 +21,7 @@ class mancala {
             }
         ]
         this.counter = 0
+        this.gameCounter = 0
         this.space = 20
         this.currentPlayer = this.players[0]
         this.otherPlayer = this.players[1]
@@ -33,7 +34,7 @@ class mancala {
         this.otherBoardSide = this.otherPlayer.boardSide
         this.currentDistribution = this.currentPlayer.distribution
         this.currentBoardHighlighted = this.currentPlayer.boardHighlighted
-        this.resultText = 0
+        this.resultText = ''
     }
 
 
@@ -48,21 +49,30 @@ class mancala {
                 this.gameCounter++
 
             }
+
         }
+
         if (this.gameCounter === 12) {
-            this.gameOver = true
+            this.points()
+            this.gameCounter = 0
+            this.gameOver = true;
+        } else {
+            this.gameCounter = 0
+            this.gameOver = false;
         }
-        this.counter = 0
+
+
     }
 
     //ao final do jogo quem tiver mais pontos vence OK
 
     points() {
+
         if (this.players[0].score > this.players[1].score && this.gameOver === true) {
             this.resultText = `${this.players[0].name}`;
         } else if (this.players[1].score > this.players[0].score && this.gameOver === true) {
             this.resultText = `${this.players[1].name}`;
-        } else if (this.gameOver === true) {
+        } else if (this.gameOver === true && this.players[1].score === this.players[0].score) {
             this.resultText = `É um empate`;
         }
     }
@@ -70,7 +80,7 @@ class mancala {
     //se a ultima peça cair em uma casa vasia voce rouba as peças da casa em frente OK   
 
     robPieces() {
-        if(((this.space + this.pieces) % 14) !== 0 && ((this.space + this.pieces) % 14) !== 7){
+        if (((this.space + this.pieces) % 14) !== 0 && ((this.space + this.pieces) % 14) !== 7) {
             if ((this.board[(this.space + this.pieces) % 14]) === 1 && this.board[(14 - ((this.space + this.pieces) % 14))] !== 0) {
                 this.board[this.currentOasis] += (this.board[(14 - ((this.space + this.pieces) % 14))] + 1)
                 this.board[(14 - ((this.space + this.pieces) % 14))] = 0
@@ -92,6 +102,8 @@ class mancala {
             }
             this.currentOasis = this.currentPlayer.oasis
             this.otherOasis = this.otherPlayer.oasis
+            this.currentBoardSide = this.currentPlayer.boardSide
+            this.currentDistribution = this.currentPlayer.distribution
 
         }
     }
@@ -100,7 +112,7 @@ class mancala {
     // cada jogada OK 
 
     play(n) {
-        if (n !== 0){
+        if (n !== 0) {
             this.space = n
             this.pieces = this.board[this.space]
             this.counter = this.pieces
@@ -110,18 +122,16 @@ class mancala {
                 }
             }
             for (let j = 0; j < this.counter; j++) {
-    
+
                 if (this.currentDistribution.indexOf((this.space + 1 + j) % 14) !== -1) {
                     this.board[(this.space + 1 + j) % 14]++
                 }
             }
-    
-    
+            this.players[0].score = this.board[7]
+            this.players[1].score = this.board[0]
             this.board[this.space] -= this.pieces;
             this.robPieces()
             this.changePlayer()
-            this.currentBoardSide = this.currentPlayer.boardSide
-            this.currentDistribution = this.currentPlayer.distribution
             this.endGame()
             this.points()
         }
