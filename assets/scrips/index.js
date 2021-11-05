@@ -37,7 +37,16 @@ class mancala {
         this.resultText = ''
     }
 
-
+    sumSide() {
+        for (let j = 1; j < 7; j++) {
+            this.board[7] += this.board[j]
+            this.board[j] = 0
+        }
+        for (let k = 8; k < 14; k++) {
+            this.board[0] += this.board[k]
+            this.board[k] = 0
+        }
+    }
 
 
 
@@ -45,7 +54,7 @@ class mancala {
     endGame() {
         for (let i = 0; i < this.holes.length; i++) {
 
-            if (this.board[this.holes[i]] < 1) {
+            if (this.board[this.holes[i]] < 2) {
                 this.gameCounter++
 
             }
@@ -53,6 +62,7 @@ class mancala {
         }
 
         if (this.gameCounter === 12) {
+            this.sumSide()
             this.points()
             this.gameCounter = 0
             this.gameOver = true;
@@ -63,6 +73,7 @@ class mancala {
 
 
     }
+
 
     //ao final do jogo quem tiver mais pontos vence OK
 
@@ -84,7 +95,7 @@ class mancala {
             if ((this.board[(this.space + this.pieces) % 14]) === 1 && this.board[(14 - ((this.space + this.pieces) % 14))] !== 0) {
                 this.board[this.currentOasis] += (this.board[(14 - ((this.space + this.pieces) % 14))] + 1)
                 this.board[(14 - ((this.space + this.pieces) % 14))] = 0
-                this.board[(this.space + this.pieces) % 14] = 0
+        
             }
         }
     }
