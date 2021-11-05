@@ -74,6 +74,7 @@ class mancala {
 
     }
 
+
     //ao final do jogo quem tiver mais pontos vence OK
 
     points() {
@@ -94,7 +95,7 @@ class mancala {
             if ((this.board[(this.space + this.pieces) % 14]) === 1 && this.board[(14 - ((this.space + this.pieces) % 14))] !== 0) {
                 this.board[this.currentOasis] += (this.board[(14 - ((this.space + this.pieces) % 14))] + 1)
                 this.board[(14 - ((this.space + this.pieces) % 14))] = 0
-                this.board[(this.space + this.pieces) % 14] = 0
+        
             }
         }
     }
