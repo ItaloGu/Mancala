@@ -1,8 +1,19 @@
+body{
+    background-image: url('../images/1297965.jpg');
+    background-size: cover;
+    color: aliceblue;
+    font-family: 'Permanent Marker', cursive;
+}
 
+.seletores{
+    color: aliceblue;
+    font-weight: 600;
+}
 
 .textDecoration{
     text-decoration: none;
     color: black;
+    font-weight: 100;
 }
 
 .rules-box{
@@ -46,14 +57,15 @@
     width: 60rem;
     padding: 0.3rem;
     background-image: url('../images/wood_board.png');
-    margin: 0.4rem;
+    margin: 0.6rem;
     border-radius: 15px;     
     box-shadow: inset 0 0 1em #DFD186, 0 0 1em grey;
     box-shadow: 2px 2px 9px #555; 
 }
 
 .title{
-    margin-top: 2rem;
+    margin-top: 1rem;
+    font-size: 60px;
 }
 
 .cartas{
